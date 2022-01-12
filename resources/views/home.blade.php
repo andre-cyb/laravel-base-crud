@@ -7,4 +7,6 @@
             <li>{{ $item->title }}</li>
         @endforeach
     </ul>
+    <button class="btn btn-primary" href="">aggiungi</button>
+    
 @endsection
