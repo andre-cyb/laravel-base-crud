@@ -58,9 +58,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
+    public function show(Item $comic)
     {
-        return view("show", compact("item"));
+        return view("show", compact("comic"));
     }
 
     /**
@@ -69,9 +69,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Item $comic)
     {
-        //
+        return view("edit", compact("comic"));
     }
 
     /**
@@ -81,9 +81,11 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Item $comic)
     {
-        //
+        $data = $request->all();
+        $comic->update($data);
+        return redirect()->route('comics.show', $comic->id); //modificare dati in fillable!
     }
 
     /**

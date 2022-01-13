@@ -4,9 +4,10 @@
     <h1>questa sarà la home</h1>
     <ul>
         @foreach ($items as $item)
-            <li>{{ $item->title }}</li>
+            <li><a href="{{ route('comics.show', $item->id) }}">{{ $item->title }}</a></li>
         @endforeach
     </ul>
-    <button class="btn btn-primary" href="">aggiungi</button>
+    
+    <a href="{{ route('comics.create') }}">Aggiungi articolo</a>
     
 @endsection

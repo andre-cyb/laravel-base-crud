@@ -1,10 +1,11 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>qui metterò il form</h1>
+    <h1>aggiorna i dati di {{ $comic->title }}</h1>
     <div class="container">
-        <form action="{{ route('comics.store') }}" method="post">
+        <form action="{{ route('comics.update', $comic->id) }}" method="post">
             @csrf
+            @method('PUT')
 
             <div class="mb-4">
                 <label for="" class="form-label">title</label>
@@ -36,8 +37,7 @@
             </div>
             <button type="submit" class="btn btn-primary">aggiungi</button>
         </form>
-        <a href="{{ route('comics.index') }}">Torna alla pagina principale</a>
-        
+        <a href="{{ route('comics.index') }}">torna alla pagina principale</a>
 
     </div>
 @endsection
