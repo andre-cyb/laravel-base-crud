@@ -40,13 +40,13 @@ class ItemController extends Controller
         $data = $request->all();
 
         $newItem = new Item();
-        
-        $newItem->title = $data["title"];
+        $newItem->fill($data);
+        /* $newItem->title = $data["title"];
         $newItem->description = $data["description"];
         $newItem->price = $data["price"];
         $newItem->series = $data["series"];
         $newItem->sale_date = $data["sale_date"];
-        $newItem->type = $data["type"];
+        $newItem->type = $data["type"]; */
         $newItem->save();
 
         return redirect()->route("comics.show", $newItem["id"]);
@@ -94,8 +94,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Item $comic)
     {
-        //
+        $comic->delete();
+        return redirect()->route('comics.index', $comic->id)->with('msg', "larticolo è stato eliminato correttamente");
     }
 }

@@ -37,6 +37,16 @@
         <a href="{{ route('comics.index') }}">torna alla pagina principale</a>
     </div>
     
+    <div class="mt-3 text-danger">
+        <form action="{{ route('comics.destroy', $comic->id) }}" method="post">
+            @csrf
+            @method('delete')
+            <button type="submit" class="btn-danger btn">Elimina articolo</button>
+
+        </form>
+    </div>
+
+    
 
 
 @endsection
